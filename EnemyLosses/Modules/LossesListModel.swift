@@ -8,18 +8,34 @@
 import Foundation
 
 protocol LossesListModel{
-    func loadCurrentTechniqueLosses()
-    func loadCurrentHumanLosses()
+    func loadData()
+    //    func loadCurrentTechniqueLosses()
+    //    func loadCurrentHumanLosses()
+    
 }
 
 protocol LossesListModelDelegate: AnyObject {
-    
+    func didLoadData(result: [(Human, Technique)])
 }
 
 class LossesListModelImplementation: LossesListModel {
     weak var delegate: LossesListModelDelegate?
     
-    func loadCurrentTechniqueLosses() {
+    func loadData() {
+        loadCurrentTechniqueLosses(completion: { [weak self] techniques in
+            guard let self = self else { return }
+            
+            self.loadCurrentHumanLosses(completion: { [self] humans in
+                print("\(humans.count)")
+                print("\(techniques.count)")
+                var result = Array(zip(humans, techniques))
+                self.delegate?.didLoadData(result: result)
+            })
+        })
+        
+    }
+    
+    private func loadCurrentTechniqueLosses(completion: @escaping ([Technique]) -> Void) {
         guard let url = URL(string: "https://raw.githubusercontent.com/MacPaw/2022-Ukraine-Russia-War-Dataset/main/data/russia_losses_equipment.json") else {
             return
         }
@@ -37,7 +53,7 @@ class LossesListModelImplementation: LossesListModel {
                     return
                 }
                 let techniques = try decoder.decode([Technique].self, from: dataFromString)
-                print("\(techniques)")
+                completion(techniques)
             } catch {
                 print("erors \(error)")
                 return
@@ -46,7 +62,7 @@ class LossesListModelImplementation: LossesListModel {
         task.resume()
     }
     
-    func loadCurrentHumanLosses() {
+    private func loadCurrentHumanLosses(completion: @escaping ([Human]) -> Void) {
         guard let url = URL(string: "https://raw.githubusercontent.com/MacPaw/2022-Ukraine-Russia-War-Dataset/main/data/russia_losses_personnel.json") else {
             return
         }
@@ -57,7 +73,7 @@ class LossesListModelImplementation: LossesListModel {
             }
             do {
                 let humans = try decoder.decode([Human].self, from: data)
-                print("\(humans)")
+                completion(humans)
             } catch {
                 print("errors \(error)")
             }
@@ -66,6 +82,5 @@ class LossesListModelImplementation: LossesListModel {
         task.resume()
         
     }
-    
     
 }
