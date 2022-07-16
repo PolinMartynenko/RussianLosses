@@ -17,6 +17,7 @@
 		EE4AE72B2873058E00C01C35 /* LossesListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4AE72A2873058E00C01C35 /* LossesListModule.swift */; };
 		EE4AE72E2874C9BF00C01C35 /* Technique.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4AE72D2874C9BF00C01C35 /* Technique.swift */; };
 		EE4AE7302876115500C01C35 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4AE72F2876115500C01C35 /* Human.swift */; };
+		EEAA19F02882C73E00DD5F34 /* EnemyLossesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAA19EF2882C73E00DD5F34 /* EnemyLossesCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		EE4AE72A2873058E00C01C35 /* LossesListModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LossesListModule.swift; sourceTree = "<group>"; };
 		EE4AE72D2874C9BF00C01C35 /* Technique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Technique.swift; sourceTree = "<group>"; };
 		EE4AE72F2876115500C01C35 /* Human.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
+		EEAA19EF2882C73E00DD5F34 /* EnemyLossesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyLossesCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +80,7 @@
 		EE4AE7242873026800C01C35 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				EE4AE7252873051700C01C35 /* LossesList */,
+				EE4AE7252873051700C01C35 /* Viewes */,
 				EE4AE7142873015800C01C35 /* LossesListViewController.swift */,
 				EE4AE7262873056F00C01C35 /* LossesListViewModel.swift */,
 				EE4AE7282873057E00C01C35 /* LossesListModel.swift */,
@@ -87,11 +89,12 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		EE4AE7252873051700C01C35 /* LossesList */ = {
+		EE4AE7252873051700C01C35 /* Viewes */ = {
 			isa = PBXGroup;
 			children = (
+				EEAA19EF2882C73E00DD5F34 /* EnemyLossesCollectionViewCell.swift */,
 			);
-			path = LossesList;
+			path = Viewes;
 			sourceTree = "<group>";
 		};
 		EE4AE72C2874C98000C01C35 /* Entities */ = {
@@ -177,6 +180,7 @@
 				EE4AE7152873015800C01C35 /* LossesListViewController.swift in Sources */,
 				EE4AE7292873057E00C01C35 /* LossesListModel.swift in Sources */,
 				EE4AE72E2874C9BF00C01C35 /* Technique.swift in Sources */,
+				EEAA19F02882C73E00DD5F34 /* EnemyLossesCollectionViewCell.swift in Sources */,
 				EE4AE7272873056F00C01C35 /* LossesListViewModel.swift in Sources */,
 				EE4AE7112873015800C01C35 /* AppDelegate.swift in Sources */,
 				EE4AE7132873015800C01C35 /* SceneDelegate.swift in Sources */,

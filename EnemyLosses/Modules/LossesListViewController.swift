@@ -10,6 +10,7 @@ import UIKit
 class LossesListViewController: UIViewController {
 
     let viewModel: LossesListViewModel
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: LossesListViewController.createCompositionalLayout())
     
     init(viewModel: LossesListViewModel){
         self.viewModel = viewModel
@@ -26,11 +27,65 @@ class LossesListViewController: UIViewController {
         view.backgroundColor = .blue
         
         viewModel.onViewDidLoad()
+        setUpCollectionView()
     }
+    
 
-
+    private func setUpCollectionView(){
+        collectionView.dataSource = self
+        collectionView.register(EnemyLossesCollectionViewCell.self, forCellWithReuseIdentifier: "cell" )
+        view.addSubview(collectionView)
+        collectionView.backgroundColor = .white
+        collectionView.layer.cornerRadius = 15
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10)
+        ])
+    }
+    
+    static func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:
+                                                    .fractionalHeight(1))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets.bottom = 15
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
+                                                    
+        
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 2)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+       // section.orthogonalScrollingBehavior = .groupPaging
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        return layout
+    }
 }
 
 extension LossesListViewController: LossesListViewModelDelegate {
     
 }
+
+extension LossesListViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 9
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? EnemyLossesCollectionViewCell {
+            cell.listLable.text = "dkn"
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+}
+
