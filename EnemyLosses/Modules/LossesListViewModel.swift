@@ -10,10 +10,11 @@ import Foundation
 protocol LossesListViewModel {
     func onViewDidLoad()
     var losses : [(Human, Technique)] {get}
+
 }
 
 protocol LossesListViewModelDelegate: AnyObject {
-    
+    func reloadCollectionView()
 }
 
 
@@ -35,5 +36,6 @@ class LossesListViewModelImplementation: LossesListViewModel {
 extension LossesListViewModelImplementation: LossesListModelDelegate {
     func didLoadData(result: [(Human, Technique)]) {
         losses = result
+        delegate?.reloadCollectionView()
     }
 }

@@ -9,9 +9,6 @@ import Foundation
 
 protocol LossesListModel{
     func loadData()
-    //    func loadCurrentTechniqueLosses()
-    //    func loadCurrentHumanLosses()
-    
 }
 
 protocol LossesListModelDelegate: AnyObject {
@@ -29,7 +26,9 @@ class LossesListModelImplementation: LossesListModel {
                 print("\(humans.count)")
                 print("\(techniques.count)")
                 var result = Array(zip(humans, techniques))
-                self.delegate?.didLoadData(result: result)
+                DispatchQueue.main.async {
+                    self.delegate?.didLoadData(result: result)
+                }
             })
         })
         

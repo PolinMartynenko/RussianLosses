@@ -71,18 +71,21 @@ class LossesListViewController: UIViewController {
 }
 
 extension LossesListViewController: LossesListViewModelDelegate {
+    func reloadCollectionView() {
+        collectionView.reloadData()
+    }
     
 }
 
 extension LossesListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return viewModel.losses.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? EnemyLossesCollectionViewCell {
-            cell.listLable.text = "dkn"
+            cell.listLable.text = viewModel.losses[indexPath.row].0.date
             return cell
         }
         return UICollectionViewCell()
