@@ -16,13 +16,15 @@ class EnemyLossesCollectionViewCell : UICollectionViewCell {
     let techniqueStackView = UIStackView()
     let techniqueImageView = UIImageView(image: UIImage(named: "tank"))
     let numberOfTechniqueLabel = UILabel()
+    let stackView = UIStackView()
     
     
     override init(frame: CGRect) {
         super.init(frame: CGRect.zero)
         setUpLable()
-        setUpHumanStackView()
-        setUpTechniqueStackView()
+//        setUpHumanStackView()
+//        setUpTechniqueStackView()
+        setUpStackView()
     }
     
     required init?(coder: NSCoder) {
@@ -38,6 +40,26 @@ class EnemyLossesCollectionViewCell : UICollectionViewCell {
         NSLayoutConstraint.activate([
             listLabel.heightAnchor.constraint(equalToConstant: 25)
         ])
+        
+    }
+    
+    private func setUpStackView(){
+        stackView.axis = .horizontal
+        stackView.backgroundColor = .yellow
+        stackView.spacing = 10
+        stackView.alignment = .center
+        self.contentView.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: listLabel.bottomAnchor, constant: 10),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+        ])
+        
+        setUpHumanStackView()
+        setUpTechniqueStackView()
+        
+        
     }
     
     private func setUpHumanStackView(){
@@ -45,12 +67,8 @@ class EnemyLossesCollectionViewCell : UICollectionViewCell {
         humanStackView.backgroundColor = .green
         humanStackView.spacing = 10
         humanStackView.alignment = .center
-        self.contentView.addSubview(humanStackView)
+        stackView.addArrangedSubview(humanStackView)
         humanStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            humanStackView.topAnchor.constraint(equalTo: listLabel.bottomAnchor, constant: 10),
-            humanStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-        ])
         
         setUpHumanImageView()
         setUpNumberOfHumanLabel()
@@ -82,13 +100,8 @@ class EnemyLossesCollectionViewCell : UICollectionViewCell {
         techniqueStackView.backgroundColor = .red
         techniqueStackView.spacing = 10
         techniqueStackView.alignment = .center
-        self.contentView.addSubview(techniqueStackView)
+        stackView.addArrangedSubview(techniqueStackView)
         techniqueStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            techniqueStackView.topAnchor.constraint(equalTo: listLabel.bottomAnchor, constant: 10),
-            techniqueStackView.leadingAnchor.constraint(equalTo: humanStackView.trailingAnchor, constant: 10),
-            techniqueStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-        ])
         
         setUpTechniqueImageView()
         setUpNumberOfTechniqueLabel()
