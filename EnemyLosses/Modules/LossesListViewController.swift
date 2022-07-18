@@ -44,6 +44,7 @@ class LossesListViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10)
         ])
+    
     }
     
     static func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
@@ -54,7 +55,7 @@ class LossesListViewController: UIViewController {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets.bottom = 15
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100))
                                                     
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
@@ -85,7 +86,8 @@ extension LossesListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? EnemyLossesCollectionViewCell {
-            cell.listLable.text = viewModel.losses[indexPath.row].0.date
+            cell.listLabel.text = viewModel.losses[indexPath.row].0.date
+
             return cell
         }
         return UICollectionViewCell()
