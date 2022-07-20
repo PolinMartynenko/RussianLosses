@@ -87,6 +87,8 @@ extension LossesListViewController: UICollectionViewDataSource {
 
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? EnemyLossesCollectionViewCell {
             cell.listLabel.text = viewModel.losses[indexPath.row].0.date
+            cell.humanView.labeledTitle.text = "\(viewModel.losses[indexPath.row].0.personnel ?? 0)"
+            cell.techniqueView.labeledTitle.text = "\(viewModel.losses[indexPath.row].1.total)"
 
             return cell
         }

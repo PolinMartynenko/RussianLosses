@@ -10,12 +10,8 @@ import UIKit
 
 class EnemyLossesCollectionViewCell : UICollectionViewCell {
     let listLabel = UILabel()
-    let humanImageView = UIImageView(image: UIImage(named: "man"))
-    let humanStackView = UIStackView()
-    let numberOfHumanLabel = UILabel()
-    let techniqueStackView = UIStackView()
-    let techniqueImageView = UIImageView(image: UIImage(named: "tank"))
-    let numberOfTechniqueLabel = UILabel()
+    let humanView = LabeledImageView()
+    let techniqueView = LabeledImageView()
     let stackView = UIStackView()
     
     
@@ -56,77 +52,24 @@ class EnemyLossesCollectionViewCell : UICollectionViewCell {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         ])
         
-        setUpHumanStackView()
-        setUpTechniqueStackView()
+        setUpHumanView()
+        setUpTechniqueView()
         
         
     }
     
-    private func setUpHumanStackView(){
-        humanStackView.axis = .horizontal
-        humanStackView.backgroundColor = .green
-        humanStackView.spacing = 10
-        humanStackView.alignment = .center
-        stackView.addArrangedSubview(humanStackView)
-        humanStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        setUpHumanImageView()
-        setUpNumberOfHumanLabel()
+    private func setUpHumanView(){
+        stackView.addArrangedSubview(humanView)
+        humanView.labeledImageView.image = UIImage(named: "man")
+        humanView.backgroundColor = .green
     }
     
-    private func setUpHumanImageView(){
-        humanImageView.contentMode = .scaleAspectFit
-        humanStackView.addArrangedSubview(humanImageView)
-        NSLayoutConstraint.activate([
-            humanImageView.heightAnchor.constraint(equalToConstant: 30),
-            humanImageView.widthAnchor.constraint(equalToConstant: 30)
-        ])
-        
+    private func setUpTechniqueView(){
+        stackView.addArrangedSubview(techniqueView)
+        techniqueView.labeledImageView.image = UIImage(named: "tank")
+        techniqueView.backgroundColor = .red
     }
     
-    private func setUpNumberOfHumanLabel(){
-        numberOfHumanLabel.contentMode = .scaleAspectFit
-        numberOfHumanLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        numberOfHumanLabel.text = "ffbh"
-        humanStackView.addArrangedSubview(numberOfHumanLabel)
-        numberOfHumanLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            numberOfHumanLabel.heightAnchor.constraint(equalToConstant: 20)
-        ])
-    }
-    
-    private func setUpTechniqueStackView(){
-        techniqueStackView.axis = .horizontal
-        techniqueStackView.backgroundColor = .red
-        techniqueStackView.spacing = 10
-        techniqueStackView.alignment = .center
-        stackView.addArrangedSubview(techniqueStackView)
-        techniqueStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        setUpTechniqueImageView()
-        setUpNumberOfTechniqueLabel()
-    }
-    
-    private func setUpTechniqueImageView(){
-        techniqueImageView.contentMode = .scaleAspectFit
-        techniqueStackView.addArrangedSubview(techniqueImageView)
-        NSLayoutConstraint.activate([
-            techniqueImageView.heightAnchor.constraint(equalToConstant: 30),
-            techniqueImageView.widthAnchor.constraint(equalToConstant: 30)
-        ])
-        
-    }
-    
-    private func setUpNumberOfTechniqueLabel(){
-        numberOfTechniqueLabel.contentMode = .scaleAspectFit
-        numberOfTechniqueLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        numberOfTechniqueLabel.text = "fffse"
-        techniqueStackView.addArrangedSubview(numberOfTechniqueLabel)
-        numberOfTechniqueLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            numberOfTechniqueLabel.heightAnchor.constraint(equalToConstant: 20)
-        ])
-    }
     
 //    private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
 //

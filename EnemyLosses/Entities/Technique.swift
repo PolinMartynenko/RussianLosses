@@ -9,23 +9,35 @@ import Foundation
 
 struct Technique: Codable {
     let date : String
-    let day : Int?
-    let aircraft : Int?
-    let helicopter : Int?
-    let tank : Int?
-    let APC : Int?
-    let fieldArtillery : Int?
-    let MRL : Int?
-    let militaryAuto : Int?
-    let fuelTank : Int?
-    let drone : Int?
-    let navalShip : Int?
-    let antiAircraftWarfare : Int?
-    let specialEquipment : Int?
-    let mobileSRBMSystem : Int?
-    let vehiclesAndFuelTanks : Int?
-    let cruiseMissiles : Int?
+    let day : Int
+    let aircraft : Int
+    let helicopter : Int
+    let tank : Int
+    let APC : Int
+    let fieldArtillery : Int
+    let MRL : Int
+    let militaryAuto : Int
+    let fuelTank : Int
+    let drone : Int
+    let navalShip : Int
+    let antiAircraftWarfare : Int
+    let specialEquipment : Int
+    let mobileSRBMSystem : Int
+    let vehiclesAndFuelTanks : Int
+    let cruiseMissiles : Int
 
+    var total: Int {
+        return aircraft
+        + helicopter
+        + tank
+        + APC + fieldArtillery
+        + MRL + militaryAuto
+        + fuelTank + drone
+        + navalShip + antiAircraftWarfare
+        + specialEquipment + mobileSRBMSystem
+        + vehiclesAndFuelTanks + cruiseMissiles
+    }
+    
     enum CodingKeys: String, CodingKey {
         case date
         case day
@@ -69,13 +81,16 @@ struct Technique: Codable {
         
     }
     
-    static func decodeIntOrString(key: CodingKeys, container: KeyedDecodingContainer<CodingKeys>) -> Int? {
-        if let value = try? container.decode(Int?.self, forKey: key) {
+    static func decodeIntOrString(key: CodingKeys, container: KeyedDecodingContainer<CodingKeys>) -> Int {
+        if let value = try? container.decode(Int.self, forKey: key) {
             return value
         } else if let value = try? container.decode(String?.self, forKey: key) {
-            return Int(value)
+            return Int(value) ?? 0
         } else {
             return 0
         }
     }
+    
+        
+    
 }

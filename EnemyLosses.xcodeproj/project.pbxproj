@@ -17,6 +17,7 @@
 		EE4AE72B2873058E00C01C35 /* LossesListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4AE72A2873058E00C01C35 /* LossesListModule.swift */; };
 		EE4AE72E2874C9BF00C01C35 /* Technique.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4AE72D2874C9BF00C01C35 /* Technique.swift */; };
 		EE4AE7302876115500C01C35 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4AE72F2876115500C01C35 /* Human.swift */; };
+		EE6E96B72885F1BA00DC3F2F /* LabeledImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6E96B62885F1BA00DC3F2F /* LabeledImageView.swift */; };
 		EEAA19F02882C73E00DD5F34 /* EnemyLossesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAA19EF2882C73E00DD5F34 /* EnemyLossesCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		EE4AE72A2873058E00C01C35 /* LossesListModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LossesListModule.swift; sourceTree = "<group>"; };
 		EE4AE72D2874C9BF00C01C35 /* Technique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Technique.swift; sourceTree = "<group>"; };
 		EE4AE72F2876115500C01C35 /* Human.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
+		EE6E96B62885F1BA00DC3F2F /* LabeledImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledImageView.swift; sourceTree = "<group>"; };
 		EEAA19EF2882C73E00DD5F34 /* EnemyLossesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyLossesCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				EEAA19EF2882C73E00DD5F34 /* EnemyLossesCollectionViewCell.swift */,
+				EE6E96B62885F1BA00DC3F2F /* LabeledImageView.swift */,
 			);
 			path = Viewes;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				EE4AE72E2874C9BF00C01C35 /* Technique.swift in Sources */,
 				EEAA19F02882C73E00DD5F34 /* EnemyLossesCollectionViewCell.swift in Sources */,
 				EE4AE7272873056F00C01C35 /* LossesListViewModel.swift in Sources */,
+				EE6E96B72885F1BA00DC3F2F /* LabeledImageView.swift in Sources */,
 				EE4AE7112873015800C01C35 /* AppDelegate.swift in Sources */,
 				EE4AE7132873015800C01C35 /* SceneDelegate.swift in Sources */,
 				EE4AE7302876115500C01C35 /* Human.swift in Sources */,
