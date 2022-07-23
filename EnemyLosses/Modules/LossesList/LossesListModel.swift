@@ -25,9 +25,11 @@ class LossesListModelImplementation: LossesListModel {
             self.loadCurrentHumanLosses(completion: { [self] humans in
                 print("\(humans.count)")
                 print("\(techniques.count)")
-                var result = Array(zip(humans, techniques))
+                let result = Array(zip(humans, techniques))
+                let reversed = Array(result.reversed())
+                
                 DispatchQueue.main.async {
-                    self.delegate?.didLoadData(result: result)
+                    self.delegate?.didLoadData(result: reversed)
                 }
             })
         })
