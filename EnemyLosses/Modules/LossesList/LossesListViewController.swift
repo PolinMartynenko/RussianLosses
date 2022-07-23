@@ -21,7 +21,6 @@ class LossesListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemCyan
@@ -33,6 +32,7 @@ class LossesListViewController: UIViewController {
     
     private func setUpCollectionView(){
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(EnemyLossesCollectionViewCell.self, forCellWithReuseIdentifier: "cell" )
         collectionView.register(HeaderEnemyLosses.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderEnemyLosses.indentifier)
         view.addSubview(collectionView)
@@ -120,8 +120,15 @@ extension LossesListViewController: UICollectionViewDataSource {
         header.humanView.labeledTitle.text = "\(viewModel.losses.first?.0.personnel ?? 0)"
         header.techniqueView.labeledTitle.text = "\(viewModel.losses.first?.1.total ?? 0)"
         
-        
         return header
+    }
+}
+
+extension LossesListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let losses = viewModel.losses[indexPath.row]
+        let detailsViewController = LossesDetailsModule.build(losses)
+        self.present(detailsViewController, animated: true)
     }
 }
 
